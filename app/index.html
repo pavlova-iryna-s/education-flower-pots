@@ -11,14 +11,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="lib/angular-material/angular-material.css">
   <link rel="stylesheet" href="app.css">
   <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#!/view1">view1</a></li>
-    <li><a href="#!/view2">view2</a></li>
-  </ul>
+  <md-content class="md-padding">
+    <md-nav-bar>
+      <md-nav-item md-nav-href="#!/plants" name="plants">
+        Plants
+      </md-nav-item>
+      <md-nav-item md-nav-href="#!/schedule" name="schedule">
+        Schedule
+      </md-nav-item>
+    </md-nav-bar>
+  </md-content>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -33,9 +40,13 @@
   -->
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/angular-aria/angular-aria.js"></script>
+  <script src="lib/angular-animate/angular-animate.js"></script>
+  <script src="lib/angular-messages/angular-messages.js"></script>
+  <script src="lib/angular-material/angular-material.js"></script>
   <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
+  <script src="plants/plants.js"></script>
+  <script src="schedule/schedule.js"></script>
   <script src="core/version/version.js"></script>
   <script src="core/version/version-directive.js"></script>
   <script src="core/version/interpolate-filter.js"></script>

@@ -1,45 +1,22 @@
-# `angular-seed` — the seed for AngularJS apps
+# `education-flower-pots` — self-education project based the seed for AngularJS apps
 
-This project is an application skeleton for a typical [AngularJS][angularjs] web app. You can use it
-to quickly bootstrap your angular webapp projects and dev environment for these projects.
-
-The seed contains a sample AngularJS application and is preconfigured to install the AngularJS
-framework and a bunch of development and testing tools for instant web development gratification.
-
-The seed app doesn't do much, just shows how to wire two controllers and views together.
-
+This project is an application for step-by-step self-education of [AngularJS][angularjs] web app, which is 
+based on the [seed for AngularJS apps][angular-seed].
 
 ## Getting Started
 
-To get you started you can simply clone the `angular-seed` repository and install the dependencies:
+To get you started you can simply clone the `education-flower-pots` repository and install the dependencies:
 
 ### Prerequisites
 
-You need git to clone the `angular-seed` repository. You can get git from [here][git].
+You need git to clone the `education-flower-pots` repository. You can get git from [here][git].
 
-We also use a number of Node.js tools to initialize and test `angular-seed`. You must have Node.js
-and its package manager (npm) installed. You can get them from [here][node].
-
-### Clone `angular-seed`
-
-Clone the `angular-seed` repository using git:
-
-```
-git clone https://github.com/angular/angular-seed.git
-cd angular-seed
-```
-
-If you just want to start a new project without the `angular-seed` commit history then you can do:
-
-```
-git clone --depth=1 https://github.com/angular/angular-seed.git <your-project-name>
-```
-
-The `depth=1` tells git to only pull down one commit worth of historical data.
+Node.js tools are used to initialize and test `education-flower-pots`. You must have Node.js and its package 
+manager (npm) installed. You can get them from [here][node].
 
 ### Install Dependencies
 
-We have two kinds of dependencies in this project: tools and AngularJS framework code. The tools
+There are two kinds of dependencies in this project: tools and AngularJS framework code. The tools
 help us manage and test the application.
 
 * We get the tools we depend upon and the AngularJS code via `npm`, the [Node package manager][npm].
@@ -47,7 +24,7 @@ help us manage and test the application.
   [Java Development Kit (JDK)][jdk] installed on your machine. Check out the section on
   [end-to-end testing](#e2e-testing) for more info.
 
-We have preconfigured `npm` to automatically copy the downloaded AngularJS files to `app/lib` so we
+`npm` is preconfigured to automatically copy the downloaded AngularJS files to `app/lib` so we
 can simply do:
 
 ```
@@ -66,7 +43,7 @@ files by a web server.*
 
 ### Run the Application
 
-We have preconfigured the project with a simple development web server. The simplest way to start
+The project is preconfigured with a simple development web server. The simplest way to start
 this server is:
 
 ```
@@ -75,52 +52,18 @@ npm start
 
 Now browse to the app at [`localhost:8000/index.html`][local-app-url].
 
-
-## Directory Layout
-
-```
-app/                  --> all of the source files for the application
-  app.css               --> default stylesheet
-  core/                 --> all app specific modules
-    version/              --> version related components
-      version.js                 --> version module declaration and basic "version" value service
-      version_test.js            --> "version" value service tests
-      version-directive.js       --> custom directive that returns the current app version
-      version-directive_test.js  --> version directive tests
-      interpolate-filter.js      --> custom interpolation filter
-      interpolate-filter_test.js --> interpolate filter tests
-  view1/                --> the view1 view template and logic
-    view1.html            --> the partial template
-    view1.js              --> the controller logic
-    view1_test.js         --> tests of the controller
-  view2/                --> the view2 view template and logic
-    view2.html            --> the partial template
-    view2.js              --> the controller logic
-    view2_test.js         --> tests of the controller
-  app.js                --> main application module
-  index.html            --> app layout file (the main html template file of the app)
-  index-async.html      --> just like index.html, but loads js files asynchronously
-e2e-tests/            --> end-to-end tests
-  protractor-conf.js    --> Protractor config file
-  scenarios.js          --> end-to-end scenarios to be run by Protractor
-karma.conf.js         --> config file for running unit tests with Karma
-package.json          --> Node.js specific metadata, including development tools dependencies
-package-lock.json     --> Npm specific metadata, including versions of installed development tools dependencies
-```
-
-
 ## Testing
 
-There are two kinds of tests in the `angular-seed` application: Unit tests and end-to-end tests.
+There are two kinds of tests in the `education-flower-pots` application: Unit tests and end-to-end tests.
 
 ### Running Unit Tests
 
-The `angular-seed` app comes preconfigured with unit tests. These are written in [Jasmine][jasmine],
-which we run with the [Karma][karma] test runner. We provide a Karma configuration file to run them.
+The `education-flower-pots` app comes preconfigured with unit tests. These are written in [Jasmine][jasmine],
+which we run with the [Karma][karma] test runner. A Karma configuration file is provided to run them.
 
 * The configuration is found at `karma.conf.js`.
 * The unit tests are found next to the code they are testing and have a `.spec.js` suffix (e.g.
-  `view1.spec.js`).
+  `plants.spec.js`).
 
 The easiest way to run the unit tests is to use the supplied npm script:
 
@@ -146,7 +89,7 @@ npm run test-single-run
 <a name="e2e-testing"></a>
 ### Running End-to-End Tests
 
-The `angular-seed` app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
+The `education-flower-pots` app comes with end-to-end tests, again written in [Jasmine][jasmine]. These tests
 are run with the [Protractor][protractor] End-to-End test runner. It uses native events and has
 special features for AngularJS applications.
 
@@ -164,7 +107,7 @@ npm start
 ```
 
 In addition, since Protractor is built upon WebDriver, we need to ensure that it is installed and
-up-to-date. The `angular-seed` project is configured to do this automatically before running the
+up-to-date. The `education-flower-pots` project is configured to do this automatically before running the
 end-to-end tests, so you don't need to worry about it. If you want to manually update the WebDriver,
 you can run:
 
@@ -205,22 +148,6 @@ versions that match the version ranges specified in the `package.json` file.
 If you want to update a dependency to a version newer than what the specificed range would permit,
 you can change the version range in `package.json` and then run `npm run update-deps` as usual.
 
-
-## Loading AngularJS Asynchronously
-
-The `angular-seed` project supports loading the framework and application scripts asynchronously.
-The special `index-async.html` is designed to support this style of loading. For it to work you must
-inject a piece of AngularJS JavaScript into the HTML page. The project has a predefined script to help
-do this:
-
-```
-npm run update-index-async
-```
-
-This will copy the contents of the `angular-loader.js` library file into the `index-async.html`
-page. You can run this every time you update the version of AngularJS that you are using.
-
-
 ## Serving the Application Files
 
 While AngularJS is client-side-only technology and it is possible to create AngularJS web apps that
@@ -231,7 +158,7 @@ etc to function properly when an HTML page is opened via the `file://` scheme in
 
 ### Running the App during Development
 
-The `angular-seed` project comes preconfigured with a local development web server. It is a Node.js
+The `education-flower-pots` project comes preconfigured with a local development web server. It is a Node.js
 tool called [http-server][http-server]. You can start this web server with `npm start`, but you may
 choose to install the tool globally:
 
@@ -263,25 +190,13 @@ applicable. Usually this is done by hosting the files by the backend server or t
 reverse-proxying the backend server(s) and web server(s).
 
 
-## Continuous Integration
-
-### Travis CI
-
-[Travis CI][travis] is a continuous integration service, which can monitor GitHub for new commits to
-your repository and execute scripts such as building the app or running tests. The `angular-seed`
-project contains a Travis configuration file, `.travis.yml`, which will cause Travis to run your
-tests when you push to GitHub.
-
-You will need to enable the integration between Travis and GitHub. See the
-[Travis website][travis-docs] for instructions on how to do this.
-
-
 ## Contact
 
 For more information on AngularJS please check out [angularjs.org][angularjs].
 
 
 [angularjs]: https://angularjs.org/
+[angular-seed]: https://github.com/angular/angular-seed
 [git]: https://git-scm.com/
 [http-server]: https://github.com/indexzero/http-server
 [jasmine]: https://jasmine.github.io/
@@ -293,5 +208,3 @@ For more information on AngularJS please check out [angularjs.org][angularjs].
 [npm]: https://www.npmjs.org/
 [protractor]: http://www.protractortest.org/
 [selenium]: http://docs.seleniumhq.org/
-[travis]: https://travis-ci.org/
-[travis-docs]: https://docs.travis-ci.com/user/getting-started
