@@ -1,0 +1,32 @@
+{
+  "name": "education-flower-pots",
+  "version": "1.0.0",
+  "description": "Self-education project for learning AngularJS.",
+  "main": "index.js",
+  "dependencies": {
+    "@angular/cli": "^7.3.9",
+    "angular": "^1.7.8"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  },
+  "scripts": {
+    "update-deps": "npm update",
+    "prestart": "npm install",
+    "start": "http-server ./app -a localhost -p 8000 -c-1",
+    "pretest": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavlova-iryna-s/education-flower-pots.git"
+  },
+  "keywords": [
+    "angularjs"
+  ],
+  "author": "Iryna Pavlova",
+  "license": "GNU GPLv3",
+  "bugs": {
+    "url": "https://github.com/pavlova-iryna-s/education-flower-pots/issues"
+  },
+  "homepage": "https://github.com/pavlova-iryna-s/education-flower-pots#readme"
+}
