@@ -8,9 +8,9 @@ describe('myApp.schedule module', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-      var view2Ctrl = $controller('ScheduleCtrl');
-      expect(view2Ctrl).toBeDefined();
-    }));
+      const ctrl = $controller('ScheduleCtrl');
 
+      expect(ctrl).toBeDefined();
+    }));
   });
 });

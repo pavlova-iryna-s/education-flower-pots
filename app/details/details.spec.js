@@ -1,16 +1,15 @@
 'use strict';
 
-describe('myApp.plants module', function() {
+describe('myApp.details module', function() {
 
-  beforeEach(module('myApp.plants'));
+  beforeEach(module('myApp.details'));
 
-  describe('plants controller', function(){
-
+  describe('details controller', function(){
     it('should ....', inject(function($controller) {
       //spec body
-      var viewCtrl = $controller('PlantsCtrl');
-      expect(viewCtrl).toBeDefined();
-    }));
+      const ctrl = $controller('DetailsCtrl');
 
+      expect(ctrl).toBeDefined();
+    }));
   });
 });

@@ -1,16 +1,18 @@
 <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
     <div flex-xs flex-gt-xs="50" flex-md="33" layout="column" ng-repeat="plant in plants">
-        <a class="plant" href="#!/plants/{{ plant.id }}">
+        <a class="plant" href="#!/plants/{{ plant.id }}"
+           ng-init="nextScheduleinDays = (plant.lastWatered | nextSchedule:plant.schedule)"
+        >
             <md-card >
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">{{ plant.name }}</span>
                         <p class="md-subhead">
-                            <span ng-switch on="plant.lastWatered | nextSchedule:plant.schedule">
+                            <span ng-switch on="nextScheduleinDays">
                                 <md-icon ng-switch-when="0" style="color: red;" md-svg-src="img/icons/alarm.svg"></md-icon>
                                 <md-icon ng-switch-default md-svg-src="img/icons/rain.svg"></md-icon>
                             </span>
-                            Next water in {{ plant.lastWatered | nextSchedule:plant.schedule }} days
+                            Next water in {{ nextScheduleinDays }} days
                         </p>
                     </md-card-title-text>
                     <md-card-title-media>
