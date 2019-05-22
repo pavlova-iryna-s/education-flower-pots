@@ -1,4 +1,4 @@
-# `education-flower-pots` — self-education project based the seed for AngularJS apps
+# `education-flower-pots` — self-education project based on the seed for AngularJS apps
 
 This project is an application for step-by-step self-education of [AngularJS][angularjs] web app, which is 
 based on the [seed for AngularJS apps][angular-seed].
