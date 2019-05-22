@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('myApp.schedule', ['ngRoute'])
+const scheduleModule = angular.module('myApp.schedule', ['ngRoute']);
 
-.config(['$routeProvider', function($routeProvider) {
+scheduleModule.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/schedule', {
     templateUrl: 'schedule/schedule.html',
     controller: 'ScheduleCtrl'
   });
-}])
+}]);
 
-.controller('ScheduleCtrl', [function() {
+scheduleModule.controller('ScheduleCtrl', [function() {
 
 }]);

@@ -1,0 +1,37 @@
+<md-content class="md-padding" layout="column">
+    <md-card class="plant-details">
+        <md-card-title>
+            <md-card-title-media>
+                <div class="md-media-md card-media">
+                    <img src="img/icons/growing-plant.svg" class="md-card-image" alt="Growing plant">
+                </div>
+            </md-card-title-media>
+            <md-card-title-text>
+                <span class="md-headline">{{ plantDetails.name }}</span>
+                <span class="md-subhead">
+                    <md-icon md-svg-src="img/icons/alarm.svg"></md-icon>
+                    Repeat every {{ plantDetails.schedule }} days
+                </span>
+                <span class="md-subhead">
+                    <md-icon md-svg-src="img/icons/rain.svg"></md-icon>
+                    Next water in {{ plantDetails.lastWatered | nextSchedule:plantDetails.schedule }} days
+                </span>
+            </md-card-title-text>
+        </md-card-title>
+    </md-card>
+</md-content>
+
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button href="#!/plants" aria-label="Go back">Back</md-button>
+        <span flex></span>
+        <md-button aria-label="Water plant">
+            <md-icon md-svg-src="img/icons/water.svg"></md-icon>
+            Water
+        </md-button>
+        <md-button aria-label="Remove plant">
+            <md-icon md-svg-src="img/icons/remove.svg"></md-icon>
+            Remove
+        </md-button>
+    </div>
+</md-toolbar>

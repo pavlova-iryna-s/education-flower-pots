@@ -1,1 +1,22 @@
-<p>This is the partial for view 1.</p>
+<md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
+    <div flex-xs flex-gt-xs="50" flex-md="33" layout="column" ng-repeat="plant in plants">
+        <a class="plant" href="#!/plants/{{ plant.id }}">
+            <md-card >
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{ plant.name }}</span>
+                        <span class="md-subhead">
+                            <md-icon md-svg-src="img/icons/rain.svg"></md-icon>
+                            Next water in {{ plant.lastWatered | nextSchedule:plant.schedule }} days
+                        </span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media">
+                            <img src="img/icons/growing-plant.svg" class="md-card-image" alt="Growing plant">
+                        </div>
+                    </md-card-title-media>
+                </md-card-title>
+            </md-card>
+        </a>
+    </div>
+</md-content>

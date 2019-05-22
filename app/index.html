@@ -15,25 +15,22 @@
   <link rel="stylesheet" href="app.css">
   <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
-  <md-content class="md-padding">
-    <md-nav-bar>
-      <md-nav-item md-nav-href="#!/plants" name="plants">
-        Plants
-      </md-nav-item>
-      <md-nav-item md-nav-href="#!/schedule" name="schedule">
-        Schedule
-      </md-nav-item>
+<body ng-cloak>
+  <div ng-controller="AppCtrl">
+    <md-nav-bar
+      md-selected-nav-item="currentNavItem"
+      nav-bar-aria-label="Navigation links"
+    >
+      <md-nav-item md-nav-href="#!/plants" name="plants">Plants</md-nav-item>
+      <md-nav-item md-nav-href="#!/schedule" name="schedule">Schedule</md-nav-item>
     </md-nav-bar>
-  </md-content>
+  </div>
+
+  <div ng-view></div>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-
-  <div ng-view></div>
-
-  <div>AngularJS seed app: v<span app-version></span></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -45,10 +42,9 @@
   <script src="lib/angular-messages/angular-messages.js"></script>
   <script src="lib/angular-material/angular-material.js"></script>
   <script src="app.js"></script>
+  <script src="details/details.js"></script>
   <script src="plants/plants.js"></script>
   <script src="schedule/schedule.js"></script>
-  <script src="core/version/version.js"></script>
-  <script src="core/version/version-directive.js"></script>
-  <script src="core/version/interpolate-filter.js"></script>
+  <script src="core/date.js"></script>
 </body>
 </html>
