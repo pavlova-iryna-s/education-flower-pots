@@ -9,11 +9,14 @@
             <md-card-title-text>
                 <span class="md-headline">{{ plantDetails.name }}</span>
                 <span class="md-subhead">
-                    <md-icon md-svg-src="img/icons/alarm.svg"></md-icon>
+                    <md-icon md-svg-src="img/icons/calendar.svg"></md-icon>
                     Repeat every {{ plantDetails.schedule }} days
                 </span>
                 <span class="md-subhead">
-                    <md-icon md-svg-src="img/icons/rain.svg"></md-icon>
+                    <span ng-switch on="plantDetails.lastWatered | nextSchedule:plantDetails.schedule">
+                        <md-icon ng-switch-when="0" style="color: red;" md-svg-src="img/icons/alarm.svg"></md-icon>
+                        <md-icon ng-switch-default md-svg-src="img/icons/rain.svg"></md-icon>
+                    </span>
                     Next water in {{ plantDetails.lastWatered | nextSchedule:plantDetails.schedule }} days
                 </span>
             </md-card-title-text>

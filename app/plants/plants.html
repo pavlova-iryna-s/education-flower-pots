@@ -5,10 +5,13 @@
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">{{ plant.name }}</span>
-                        <span class="md-subhead">
-                            <md-icon md-svg-src="img/icons/rain.svg"></md-icon>
+                        <p class="md-subhead">
+                            <span ng-switch on="plant.lastWatered | nextSchedule:plant.schedule">
+                                <md-icon ng-switch-when="0" style="color: red;" md-svg-src="img/icons/alarm.svg"></md-icon>
+                                <md-icon ng-switch-default md-svg-src="img/icons/rain.svg"></md-icon>
+                            </span>
                             Next water in {{ plant.lastWatered | nextSchedule:plant.schedule }} days
-                        </span>
+                        </p>
                     </md-card-title-text>
                     <md-card-title-media>
                         <div class="md-media-sm card-media">
