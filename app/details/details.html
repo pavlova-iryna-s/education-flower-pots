@@ -1,5 +1,5 @@
 <md-content class="md-padding" layout="column"
-    ng-init="nextScheduleinDays = (plantDetails.lastWatered | nextSchedule:plantDetails.schedule)"
+    ng-init="nextScheduleInDays = (plantDetails.lastWatered | nextSchedule:plantDetails.schedule)"
 >
     <md-card class="plant-details">
         <md-card-title>
@@ -15,11 +15,11 @@
                     Repeat every {{ plantDetails.schedule }} days
                 </span>
                 <span class="md-subhead">
-                    <span ng-switch on="nextScheduleinDays">
+                    <span ng-switch on="nextScheduleInDays">
                         <md-icon ng-switch-when="0" style="color: red;" md-svg-src="img/icons/alarm.svg"></md-icon>
                         <md-icon ng-switch-default md-svg-src="img/icons/rain.svg"></md-icon>
                     </span>
-                    Next water in {{ nextScheduleinDays }} days
+                    Next water in {{ nextScheduleInDays }} days
                 </span>
             </md-card-title-text>
         </md-card-title>
