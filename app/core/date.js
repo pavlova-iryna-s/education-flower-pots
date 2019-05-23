@@ -7,9 +7,10 @@ angular.module('myApp.date.filters', [])
     /**
      * @param {Number} lastWateredDate
      * @param {Number} [days=0]
+     * @param {Boolean} [abs=false]
      * @return {Number}
      */
-    return function(lastWateredDate, days = 0) {
+    return function(lastWateredDate, days = 0, abs = false) {
       const now = new Date();
 
       now.setHours(0, 0, 0, 0);
@@ -22,8 +23,9 @@ angular.module('myApp.date.filters', [])
       }
 
       const schedule = new Date(lastWateredDate.getTime() + (days * MS_PER_DAY));
+      const daysDiff = Math.round((schedule.getTime() - now.getTime()) / MS_PER_DAY);
 
-      return Math.round((schedule.getTime() - now.getTime()) / MS_PER_DAY);
+      return (abs ? Math.abs(daysDiff) : daysDiff);
     };
   }).filter('nextSchedule', function() {
     /**

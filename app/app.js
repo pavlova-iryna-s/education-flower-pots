@@ -28,19 +28,19 @@ app.controller('AppCtrl', function($scope, $localStorage) {
     $scope.plants = $localStorage.setObject('plants', [{
       name: 'Lovely Rose',
       schedule: 2,
-      lastWatered: new Date(2019, 4, 22).getTime()
+      lastWatered: new Date(2019, 4, 22, 0, 0, 0, 0).getTime()
     }, {
       name: 'Mr. Tomato',
       schedule: 4,
-      lastWatered: new Date(2019, 4, 17).getTime()
+      lastWatered: new Date(2019, 4, 17, 0, 0, 0, 0).getTime()
     }, {
       name: 'Spiky Cactus',
       schedule: 7,
-      lastWatered: new Date().getTime()
+      lastWatered: (new Date(new Date().setHours(0, 0, 0, 0)))
     }, {
       name: 'Aloe',
       schedule: 5,
-      lastWatered: new Date().getTime()
+      lastWatered: (new Date(new Date().setHours(0, 0, 0, 0)))
     }]);
   }
 
@@ -56,7 +56,7 @@ app.directive('nextSchedule', function() {
         </div>
         <div ng-switch-default>
             <md-icon md-svg-src="img/icons/rain.svg"></md-icon>
-            <span>Next water in {{ nextScheduleInDays }} day{{ nextScheduleInDays | plural }}</span>
+            <span>Next water in {{ nextScheduleInDays | inDays }}</span>
         </div>
     </div>`
   };

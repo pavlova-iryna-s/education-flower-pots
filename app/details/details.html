@@ -1,5 +1,8 @@
 <md-content class="md-padding" layout="column"
-
+    ng-init="
+        nextScheduleInDays = (plant.lastWatered | daysDifference:plant.schedule | nextSchedule);
+        lastWateredInDays = (plant.lastWatered | daysDifference:0:true);
+    "
 >
     <md-card class="plant-details">
         <md-card-title>
@@ -9,14 +12,14 @@
                 </div>
             </md-card-title-media>
             <md-card-title-text>
-                <span class="md-headline">{{ plant.name }}</span>
+                <span class="md-headline">{{ ::plant.name }}</span>
                 <span class="md-subhead">
                     <md-icon md-svg-src="img/icons/calendar.svg"></md-icon>
-                    Repeat every {{ plant.schedule }} day{{ plant.schedule | plural  }}
+                    Repeat every {{ ::plant.schedule | inDays }}
                 </span>
                 <span class="md-subhead">
                     <md-icon md-svg-src="img/icons/water.svg"></md-icon>
-                    Last time watered {{ lastWateredInDays }} day{{ lastWateredInDays | plural }} ago: {{ plant.lastWatered | date }}
+                    Last time watered {{ lastWateredInDays | inDays }} ago: {{ plant.lastWatered | date }}
                 </span>
                 <span next-schedule></span>
             </md-card-title-text>

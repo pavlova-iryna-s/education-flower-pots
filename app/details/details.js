@@ -15,7 +15,14 @@ detailsModule.controller('DetailsCtrl', function($scope, $routeParams, $localSto
   $scope.plant = $scope.$parent.plants[$scope.plantIndex];
 
   $scope.waterPlant = function() {
-    $scope.plant.lastWatered = (new Date(new Date().setHours(0, 0, 0, 0))).getTime();
+    const plant = $scope.plant;
+
+    plant.lastWatered = (new Date(new Date().setHours(0, 0, 0, 0))).getTime();
+
+    $scope.lastWateredInDays = Math.abs($filter('daysDifference')(plant.lastWatered, 0));
+    $scope.nextScheduleInDays = $filter('nextSchedule')(
+      $filter('daysDifference')(plant.lastWatered, plant.schedule)
+    );
 
     $localStorage.setObject('plants', $scope.$parent.plants);
   };
@@ -26,14 +33,4 @@ detailsModule.controller('DetailsCtrl', function($scope, $routeParams, $localSto
     $localStorage.setObject('plants', $scope.$parent.plants);
     $location.path('plants');
   };
-
-  $scope.$watch('plant.lastWatered', function() {
-    const plant = $scope.plant;
-
-    $scope.lastWateredInDays = Math.abs($filter('daysDifference')(plant.lastWatered, 0));
-
-    $scope.nextScheduleInDays = $filter('nextSchedule')(
-      $filter('daysDifference')(plant.lastWatered, plant.schedule)
-    );
-  })
 });
