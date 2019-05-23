@@ -1,19 +1,21 @@
+<md-button href="#!/create" class="md-fab md-primary add-button" aria-label="Add new plant">
+    <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
+</md-button>
+
 <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
-    <div flex-xs flex-gt-xs="50" flex-md="33" layout="column" ng-repeat="plant in plants">
-        <a class="plant" href="#!/plants/{{ plant.id }}"
-           ng-init="nextScheduleInDays = (plant.lastWatered | nextSchedule:plant.schedule)"
+    <div flex layout="column" layout-align="center center" layout-padding ng-show="!plants.length">
+        <md-icon style="height: 100px; width: 100px;" md-svg-src="img/icons/no-plants.svg"></md-icon>
+        <p>There are no plants. Save the Earth and add one!</p>
+    </div>
+    <div flex-xs flex-gt-xs="50" flex-md="33" layout="column" ng-repeat="plant in plants track by plant.name">
+        <a class="plant" href="#!/plants/{{ plants.indexOf(plant) }}"
+           ng-init="nextScheduleInDays = (plant.lastWatered | daysDifference:plant.schedule | nextSchedule);"
         >
-            <md-card >
+            <md-card>
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">{{ plant.name }}</span>
-                        <p class="md-subhead">
-                            <span ng-switch on="nextScheduleInDays">
-                                <md-icon ng-switch-when="0" style="color: red;" md-svg-src="img/icons/alarm.svg"></md-icon>
-                                <md-icon ng-switch-default md-svg-src="img/icons/rain.svg"></md-icon>
-                            </span>
-                            Next water in {{ nextScheduleInDays }} days
-                        </p>
+                        <p next-schedule></p>
                     </md-card-title-text>
                     <md-card-title-media>
                         <div class="md-media-sm card-media">

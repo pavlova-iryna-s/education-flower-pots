@@ -1,7 +1,21 @@
 /* app css stylesheet */
 
+.add-button {
+  position: fixed;
+  right: 0;
+  top: 15px;
+}
+
 a.plant {
   text-decoration: none;
+}
+
+a.plant md-card {
+  transition: all .25s linear;
+}
+
+a.plant md-card:hover {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
 }
 
 .plant-details md-card-title-text {
@@ -14,4 +28,22 @@ a.plant {
 
 .plant-details .md-subhead {
   margin: 2px 15px;
+}
+
+.md-datepicker-input-container {
+  width: 250px;
+}
+
+._md-datepicker-floating-label .md-button.md-datepicker-button {
+  padding: 6px;
+  visibility: hidden;
+  width: 0;
+}
+
+._md-datepicker-floating-label label {
+  left: 36px !important;
+}
+
+._md-datepicker-floating-label .md-input-message-animation {
+  margin-left: 36px !important;
 }

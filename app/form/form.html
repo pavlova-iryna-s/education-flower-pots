@@ -1,0 +1,53 @@
+<form name="plantForm" layout-padding layout="column">
+    <md-content class="md-no-momentum">
+        <md-input-container class="md-icon-float md-block">
+            <label>Plant name</label>
+            <md-icon md-svg-src="img/icons/growing-plant.svg"></md-icon>
+            <input
+                name="plantName" ng-model="plant.name" aria-label="Plant name"
+                required md-maxlength="50" minlength="3" type="text"
+            >
+            <div ng-messages="plantForm.plantName.$error">
+                <div ng-show="plantForm.plantName.$error.required" ng-message="required">This is required!</div>
+                <div ng-show="plantForm.plantName.$error['md-maxlength']" ng-message="md-maxlength">That's too long!</div>
+                <div ng-show="plantForm.plantName.$error.minlength" ng-message="minlength">That's too short!</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-icon-float md-block">
+            <label>Repeat schedule in days</label>
+            <md-icon md-svg-src="img/icons/calendar.svg"></md-icon>
+            <input
+                name="plantSchedule" ng-model="plant.schedule" aria-label="Schedule"
+                required type="number" step="1" min="1" max="30"
+            >
+            <div ng-messages="plantForm.plantSchedule.$error">
+                <div ng-show="plantForm.plantSchedule.$error.required" ng-message="required">This is required!</div>
+                <div ng-show="plantForm.plantSchedule.$error.max" ng-message="max">That's too long! Do you want to kill your plant?</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container flex-gt-xs class="md-icon-float md-block">
+            <label>Last watered date</label>
+            <md-icon md-svg-src="img/icons/rain.svg"></md-icon>
+            <md-datepicker
+                    name="plantLastWatered" aria-label="Last watered date"
+                    ng-model="plant.lastWatered" required
+                    md-max-date="today"
+            ></md-datepicker>
+            <div ng-messages="plantForm.plantLastWatered.$error">
+                <div ng-show="plantForm.plantLastWatered.$error.required" ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+    </md-content>
+</form>
+
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button href="#!/plants" aria-label="Go back">Back</md-button>
+        <span flex></span>
+        <md-button ng-click="createPlant()" ng-disabled="plantForm.$invalid" aria-label="Submit plant's data">
+            Submit
+        </md-button>
+    </div>
+</md-toolbar>
