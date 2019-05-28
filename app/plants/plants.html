@@ -3,15 +3,13 @@
 </md-button>
 
 <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
-    <div flex layout="column" layout-align="center center" layout-padding ng-style="plants.length && {'display':'none'}">
+    <div flex layout="column" layout-align="center center" layout-padding ng-style="::plants.length && {'display':'none'}">
         <md-icon style="height: 100px; width: 100px;" md-svg-src="img/icons/no-plants.svg"></md-icon>
         <p>There are no plants. Save the Earth and add one!</p>
     </div>
 
-    <div flex-xs flex-gt-xs="50" flex-md="33" layout="column" ng-repeat="plant in plants track by plant.name">
-        <a class="plant" href="#!/plants/{{ ::plants.indexOf(plant) }}"
-           ng-init="nextScheduleInDays = (plant.lastWatered | daysDifference:plant.schedule | nextSchedule);"
-        >
+    <div flex-xs flex-gt-xs="50" flex-md="33" layout="column" ng-repeat="plant in plants track by $index">
+        <a class="plant" href="#!/plants/{{ ::plants.indexOf(plant) }}">
             <md-card>
                 <md-card-title>
                     <md-card-title-text>
@@ -20,7 +18,7 @@
                     </md-card-title-text>
                     <md-card-title-media>
                         <div class="md-media-sm card-media">
-                            <img src="img/icons/growing-plant.svg" class="md-card-image" alt="Growing plant">
+                            <img src="img/icons/growing-plant.svg" class="md-card-image" alt="Image of growing plant">
                         </div>
                     </md-card-title-media>
                 </md-card-title>

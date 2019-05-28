@@ -9,24 +9,6 @@ angular.module('myApp.details', ['ngRoute'])
     });
   }])
   .controller('DetailsCtrl', function($scope, $routeParams, $plantsFactory) {
-    const plantIndex = $routeParams.plantIndex;
-
-    $scope.plant = $plantsFactory.getPlant(plantIndex);
-
-    function calculateDays() {
-      $scope.lastWateredInDays = $plantsFactory.getLastWateredInDays(plantIndex);
-      $scope.nextScheduleInDays = $plantsFactory.getNextScheduleInDays(plantIndex);
-    };
-
-    $scope.waterPlant = function() {
-      $plantsFactory.water(plantIndex);
-
-      calculateDays();
-    };
-
-    $scope.removePlant = function() {
-      $plantsFactory.remove(plantIndex);
-    };
-
-    calculateDays();
+    $scope.plantIndex = Number($routeParams.plantIndex);
+    $scope.plant = $plantsFactory.getPlant($scope.plantIndex);
   });

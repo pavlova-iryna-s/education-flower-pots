@@ -27,12 +27,25 @@ angular.module('myApp.date.filters', [])
 
       return (abs ? Math.abs(daysDiff) : daysDiff);
     };
-  }).filter('nextSchedule', function() {
+  }).filter('nextScheduleInDays', function() {
     /**
      * @param {Number} [days=0]
      * @return {Number}
      */
     return function(days = 0) {
       return (days > 0 ? days : 0);
+    };
+  }).filter('nextScheduleDate', function() {
+    /**
+     * @param {Date} date
+     * @param {Number} [days=0]
+     * @return {Date}
+     */
+    return function(date, days = 0) {
+      const result = new Date(date);
+
+      result.setDate(result.getDate() + days);
+
+      return result;
     };
   });

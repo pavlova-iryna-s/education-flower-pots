@@ -1,1 +1,33 @@
-<p></p>
+<md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
+    <div flex layout="column" layout-align="center center" layout-padding ng-style="::plants.length && {'display': 'none'}">
+        <md-icon style="height: 100px; width: 100px;" md-svg-src="img/icons/no-plants.svg"></md-icon>
+        <p>There are no plants. Save the Earth and add one!</p>
+    </div>
+
+    <md-list flex>
+        <div
+            ng-repeat="plant in plants | orderBy:['nextScheduleInDays', 'lastWatered'] track by $index"
+            ng-init="
+                nextWaterDate = (plant.lastWatered | nextScheduleDate:plant.schedule);
+                plantIndex = (plants.indexOf(plant));
+            "
+        >
+            <md-list-item ng-click="goTo('/plants/' + plantIndex)" class="md-3-line md-long-text" aria-label="Schedule of the plant {{ ::plant.name }}">
+                <img src="img/icons/growing-plant.svg" class="md-avatar" style="border-radius: 0;" />
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ ::plant.name }}</h3>
+                    <p next-schedule style="margin-top: 5px;"></p>
+                    <p ng-style="!plant.nextScheduleInDays && {'color': 'red'}" style="margin-top: 5px;">
+                        Planned water date: {{ nextWaterDate | date:short }}
+                    </p>
+                </div>
+
+                <md-button layout-align="center center" ng-disabled="!plant.lastWateredInDays"
+                   ng-click="plantsFactory.water(plantIndex)" aria-label="Water plant" class="md-fab md-primary"
+                >
+                    <md-icon md-svg-src="img/icons/water.svg"></md-icon>
+                </md-button>
+            </md-list-item>
+        </div>
+    </md-list>
+</md-content>

@@ -16,13 +16,19 @@ const app = angular.module('myApp', [
 
     $routeProvider.otherwise({redirectTo: '/plants'});
   }])
-  .run(function($rootScope) {
+  .run(['$rootScope', '$location', '$plantsFactory', function($rootScope, $location, $plantsFactory) {
     $rootScope.$on('$routeChangeStart', function (angularEvent, next) {
       if (next.$$route) {
         $rootScope.updateNavigation(next.$$route._navigation);
       }
     });
-  });
+
+    $rootScope.plantsFactory = $plantsFactory;
+
+    $rootScope.goTo = function(path) {
+      $location.path(path);
+    };
+  }]);
 
 app.controller('AppCtrl', function($scope, $rootScope, $plantsFactory) {
   $scope.plants = $plantsFactory.getPlants();
@@ -40,14 +46,14 @@ app.directive('nextSchedule', function() {
     template(tElem, tAttrs) {
       const isStatic = (tAttrs.static ? '::' : '');
 
-      return `<div class="md-subhead" ng-switch on="nextScheduleInDays">
+      return `<div class="md-subhead" ng-switch on="${isStatic}plant.nextScheduleInDays">
           <div ng-switch-when="0">
               <md-icon style="color: red;" md-svg-src="img/icons/alarm.svg"></md-icon>
               <span>Next water is today!</span>
           </div>
           <div ng-switch-default>
               <md-icon md-svg-src="img/icons/rain.svg"></md-icon>
-              <span>Next water in {{ ${isStatic}(nextScheduleInDays | inDays) }}</span>
+              <span>Next water in {{ ${isStatic}(plant.nextScheduleInDays | inDays) }}</span>
           </div>
       </div>`;
     }
@@ -74,7 +80,7 @@ app.factory('$plantsFactory', function($localStorage, $filter, $location) {
     }, {
       name: 'Aloe',
       schedule: 5,
-      lastWatered: (new Date(new Date().setHours(0, 0, 0, 0)))
+      lastWatered: (new Date(new Date().setHours(0, 0, 0, 0))).getTime()
     }]);
   }
 
@@ -117,7 +123,7 @@ app.factory('$plantsFactory', function($localStorage, $filter, $location) {
      * @return {Object}
      */
     getPlant(plant) {
-      const plantIndex = Number.isInteger(plant) ? _plants.indexOf(plant) : plant;
+      const plantIndex = Number.isInteger(plant) ? plant : _plants.indexOf(plant);
 
       return _plants[plantIndex] || {};
     },
@@ -126,6 +132,8 @@ app.factory('$plantsFactory', function($localStorage, $filter, $location) {
      * @return {Object[]}
      */
     getPlants() {
+      this._serialize();
+
       return _plants;
     },
 
@@ -149,7 +157,7 @@ app.factory('$plantsFactory', function($localStorage, $filter, $location) {
       const plant = this.getPlant(plantIndex);
 
       if (plant) {
-        return $filter('nextSchedule')(
+        return $filter('nextScheduleInDays')(
           $filter('daysDifference')(plant.lastWatered, plant.schedule)
         );
       }
@@ -160,11 +168,23 @@ app.factory('$plantsFactory', function($localStorage, $filter, $location) {
      * @private
      */
     _commitChanges(callbackPath) {
+      this._serialize();
+
       $localStorage.setObject('plants-storage', _plants);
 
       if (callbackPath) {
         $location.path(callbackPath);
       }
+    },
+
+    /**
+     * @private
+     */
+    _serialize() {
+      _plants.forEach((plant, plantIndex) => {
+        plant.nextScheduleInDays = this.getNextScheduleInDays(plantIndex);
+        plant.lastWateredInDays = this.getLastWateredInDays(plantIndex);
+      });
     }
   }
 });

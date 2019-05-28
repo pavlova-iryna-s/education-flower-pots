@@ -3,7 +3,7 @@
         <md-card-title>
             <md-card-title-media>
                 <div class="md-media-md card-media">
-                    <img src="img/icons/growing-plant.svg" class="md-card-image" alt="Growing plant">
+                    <img src="img/icons/growing-plant.svg" class="md-card-image" alt="Image of growing plant">
                 </div>
             </md-card-title-media>
             <md-card-title-text>
@@ -14,7 +14,7 @@
                 </span>
                 <span class="md-subhead">
                     <md-icon md-svg-src="img/icons/water.svg"></md-icon>
-                    Last time watered {{ lastWateredInDays | inDays }} ago: {{ plant.lastWatered | date }}
+                    Last time watered {{ plant.lastWateredInDays | inDays }} ago: {{ plant.lastWatered | date }}
                 </span>
                 <span next-schedule></span>
             </md-card-title-text>
@@ -24,13 +24,12 @@
 
 <md-toolbar>
     <div class="md-toolbar-tools">
-        <md-button href="#!/plants" aria-label="Go back">Back</md-button>
         <span flex></span>
-        <md-button ng-disabled="!lastWateredInDays" ng-click="waterPlant()" aria-label="Water plant">
+        <md-button ng-disabled="!plant.lastWateredInDays" ng-click="plantsFactory.water(plantIndex)" aria-label="Water plant">
             <md-icon md-svg-src="img/icons/water.svg"></md-icon>
             Water
         </md-button>
-        <md-button ng-click="removePlant()" aria-label="Remove plant">
+        <md-button ng-click="plantsFactory.remove(plantIndex)" aria-label="Remove plant">
             <md-icon md-svg-src="img/icons/remove.svg"></md-icon>
             Remove
         </md-button>
