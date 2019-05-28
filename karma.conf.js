@@ -27,8 +27,11 @@ module.exports = function(config) {
     plugins: [
       'karma-chrome-launcher',
       'karma-firefox-launcher',
-      'karma-jasmine'
-    ]
+      'karma-jasmine',
+      'karma-spec-reporter'
+    ],
+
+    reporters: ['spec'],
 
   });
 };

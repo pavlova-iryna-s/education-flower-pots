@@ -1,12 +1,11 @@
 'use strict';
 
-describe('myApp.plants module', function() {
+describe('module - myApp.plants', function() {
 
   beforeEach(module('myApp.plants'));
 
-  describe('plants controller', function(){
-    it('should ....', inject(function($controller) {
-      //spec body
+  describe('controller - PlantsCtrl', function(){
+    it('should be created', inject(function($controller) {
       const ctrl = $controller('PlantsCtrl');
 
       expect(ctrl).toBeDefined();

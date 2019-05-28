@@ -1,6 +1,6 @@
 'use strict';
 
-describe('myApp.details module', function() {
+describe('module - myApp.details', function() {
   let scope = null;
 
   beforeEach(module('myApp.details'));
@@ -12,7 +12,7 @@ describe('myApp.details module', function() {
     scope.plantsFactory = {};
   }));
 
-  describe('DetailsCtrl', function(){
+  describe('controller - DetailsCtrl', function(){
     it('should be created', inject(function($controller) {
       const ctrl = $controller('DetailsCtrl', {
         $scope: scope,

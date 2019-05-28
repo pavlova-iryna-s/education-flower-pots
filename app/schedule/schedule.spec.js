@@ -1,13 +1,11 @@
 'use strict';
 
-describe('myApp.schedule module', function() {
+describe('module- myApp.schedule', function() {
 
   beforeEach(module('myApp.schedule'));
 
-  describe('schedule controller', function(){
-
-    it('should ....', inject(function($controller) {
-      //spec body
+  describe('controller - ScheduleCtrl', function(){
+    it('should be created', inject(function($controller) {
       const ctrl = $controller('ScheduleCtrl');
 
       expect(ctrl).toBeDefined();
