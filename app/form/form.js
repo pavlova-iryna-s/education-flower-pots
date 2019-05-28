@@ -8,10 +8,6 @@ angular.module('myApp.form', ['ngRoute'])
       _navigation: 'create'
     });
   }])
-  .controller('FormCtrl', function($scope, $plantsFactory) {
+  .controller('FormCtrl', function($scope) {
     $scope.today = new Date();
-
-    $scope.createPlant = function() {
-      $plantsFactory.create($scope.plant);
-    };
   });

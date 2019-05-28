@@ -46,7 +46,7 @@
     <div class="md-toolbar-tools">
         <md-button href="#!/plants" aria-label="Go back">Back</md-button>
         <span flex></span>
-        <md-button ng-click="createPlant()" ng-disabled="plantForm.$invalid" aria-label="Submit plant's data">
+        <md-button ng-click="plantsFactory.create(plant)" ng-disabled="plantForm.$invalid" aria-label="Submit plant's data">
             Submit
         </md-button>
     </div>
