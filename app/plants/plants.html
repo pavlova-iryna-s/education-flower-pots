@@ -3,12 +3,12 @@
 </md-button>
 
 <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap>
-    <div flex layout="column" layout-align="center center" layout-padding ng-style="::plants.length && {'display':'none'}">
+    <div ng-if="::!plants.length" flex layout="column" layout-align="center center" layout-padding>
         <md-icon style="height: 100px; width: 100px;" md-svg-src="img/icons/no-plants.svg"></md-icon>
         <p>There are no plants. Save the Earth and add one!</p>
     </div>
 
-    <div flex-xs flex-gt-xs="50" flex-md="33" layout="column" ng-repeat="plant in plants track by $index">
+    <div flex-xs flex-gt-xs="50" flex-md="33" layout="column" ng-repeat="plant in ::plants track by $index">
         <a class="plant" href="#!/plants/{{ ::plants.indexOf(plant) }}">
             <md-card>
                 <md-card-title>

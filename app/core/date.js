@@ -2,15 +2,14 @@
 
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-angular.module('myApp.date.filters', [])
-  .filter('daysDifference', function() {
+angular.module('myApp.filters.date', [])
+  .filter('futureDaysDifference', function() {
     /**
      * @param {Number} lastWateredDate
      * @param {Number} [days=0]
-     * @param {Boolean} [abs=false]
      * @return {Number}
      */
-    return function(lastWateredDate, days = 0, abs = false) {
+    return function(lastWateredDate, days = 0) {
       const now = new Date();
 
       now.setHours(0, 0, 0, 0);
@@ -23,9 +22,8 @@ angular.module('myApp.date.filters', [])
       }
 
       const schedule = new Date(lastWateredDate.getTime() + (days * MS_PER_DAY));
-      const daysDiff = Math.round((schedule.getTime() - now.getTime()) / MS_PER_DAY);
 
-      return (abs ? Math.abs(daysDiff) : daysDiff);
+      return Math.round((schedule.getTime() - now.getTime()) / MS_PER_DAY);
     };
   }).filter('nextScheduleInDays', function() {
     /**

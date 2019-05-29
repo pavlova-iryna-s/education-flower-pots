@@ -8,8 +8,8 @@ const app = angular.module('myApp', [
     'myApp.form',
     'myApp.plants',
     'myApp.schedule',
-    'myApp.date.filters',
-    'myApp.string.filters'
+    'myApp.filters.date',
+    'myApp.filters.string'
   ])
   .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
@@ -113,7 +113,7 @@ app.factory('$plantsFactory', function($localStorage, $filter, $location) {
     water(plantIndex) {
       const plant = this.getPlant(plantIndex);
 
-      plant.lastWatered = (new Date(new Date().setHours(0, 0, 0, 0))).getTime();
+      plant.lastWatered = (new Date()).getTime();
 
       this._commitChanges();
     },
@@ -145,7 +145,7 @@ app.factory('$plantsFactory', function($localStorage, $filter, $location) {
       const plant = this.getPlant(plantIndex);
 
       if (plant) {
-        return Math.abs($filter('daysDifference')(plant.lastWatered, 0));
+        return Math.abs($filter('futureDaysDifference')(plant.lastWatered, 0));
       }
     },
 
@@ -158,7 +158,7 @@ app.factory('$plantsFactory', function($localStorage, $filter, $location) {
 
       if (plant) {
         return $filter('nextScheduleInDays')(
-          $filter('daysDifference')(plant.lastWatered, plant.schedule)
+          $filter('futureDaysDifference')(plant.lastWatered, plant.schedule)
         );
       }
     },

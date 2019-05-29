@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('myApp.string.filters', [])
+angular.module('myApp.filters.string', [])
   .filter('inDays', function() {
     /**
      * @param {Number} [count=1]
      * @return {String}
      */
     return function(count = 1) {
-      return count + ' day' + (count === 1 ? '' : 's');
+      return Math.abs(count) + ' day' + (count === 1 ? '' : 's');
     };
   });
